@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operación de Cálculo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 100px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cambio en el desfase Øij</h1>
+        <h2>Ajusta el desfase de las señales de tráfico en una intersección específica durante una transición de duración definida. </h2>
+        <form id="calcForm">
+            <label for="Øio">Øio:</label>
+            <input type="number" id="Øio" placeholder="Desfase inical">
+            <br>
+            <label for="Øif">Øif:</label>
+            <input type="number" id="Øif" placeholder="Desfase final">
+            <br>
+            <label for="ppow">ppow(i,j):</label>
+            <input type="number" id="ppow" placeholder="Parámetro">
+            <br>
+            <label for="n">n:</label>
+            <input type="number" id="n" placeholder="Paso actual">
+            <br>
+            <label for="N">N:</label>
+            <input type="number" id="N" placeholder="Total pasos">
+            <br>
+            <button type="button" onclick="calcular()">Calcular</button>
+        </form>
+        <div id="resultado"></div>
+        <br>
+        <a href="index.html" type="button">Atrás</a>
+    </div>
+
+    <script>
+        function calcular() {
+            var Øio = parseFloat(document.getElementById('Øio').value);
+            var Øif = parseFloat(document.getElementById('Øif').value);
+            var ppow = parseFloat(document.getElementById('ppow').value);
+            var n = parseFloat(document.getElementById('n').value);
+            var N = parseFloat(document.getElementById('N').value);
+            var Øij = Øio + (Øif - Øio) * Math.pow(ppow, (n / N));
+            document.getElementById('resultado').innerHTML = "El resultado de la operación es: " + Øij;
+        }
+    </script>
+</body>
+</html>
